@@ -1,0 +1,113 @@
+/* ============================================================
+   Focus Grove — design tokens & base styles
+   Warm paper palette, hand-drawn borders, subtle grain.
+   ============================================================ */
+
+:root {
+  /* palette — cream / sage / dusty blue / warm yellow / terracotta / brown */
+  --paper: #f7f0e2;
+  --paper-deep: #efe5d0;
+  --card: #fffaf0;
+  --ink: #4a3f33;
+  --ink-soft: #7a6c5b;
+  --ink-faint: #a99a86;
+  --sage: #7d9b76;
+  --sage-soft: #d7e2d0;
+  --blue: #7e97ad;
+  --blue-soft: #dbe4ea;
+  --yellow: #e8b94f;
+  --yellow-soft: #f6e7bf;
+  --terracotta: #c97b5d;
+  --terracotta-soft: #f0d5c8;
+  --brown: #8a6f52;
+  --line: #c9bfae;
+  --shadow: 0 6px 18px rgba(93, 74, 52, 0.14), 0 2px 4px rgba(93, 74, 52, 0.08);
+  --shadow-soft: 0 3px 10px rgba(93, 74, 52, 0.1);
+
+  /* hand-drawn wobbly border radii */
+  --wobble: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --wobble-sm: 125px 10px 105px 10px / 10px 105px 10px 125px;
+
+  --font-display: 'Caveat', 'Comic Sans MS', cursive;
+  --font-body: 'Nunito', 'Avenir', system-ui, sans-serif;
+
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --paper: #2a251e;
+  --paper-deep: #221e18;
+  --card: #352f27;
+  --line: #55483a;
+  --ink: #efe5d1;
+  --ink-soft: #c4b49d;
+  --ink-faint: #8d7f6b;
+  --sage: #8fac87;
+  --sage-soft: #3d4a39;
+  --blue: #8fa7bc;
+  --blue-soft: #35414c;
+  --yellow: #e3bc63;
+  --yellow-soft: #4c4128;
+  --terracotta: #d18a6d;
+  --terracotta-soft: #4e352a;
+  --brown: #b39877;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.25);
+  --shadow-soft: 0 3px 10px rgba(0, 0, 0, 0.28);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+/* subtle paper grain over everything */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 3px dashed var(--sage);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+input { font-family: var(--font-body); }
+
+::selection { background: var(--yellow-soft); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

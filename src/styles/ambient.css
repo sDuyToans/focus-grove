@@ -1,0 +1,84 @@
+/* AmbientBackground — drifting leaves / stars + soft blobs */
+.ambient {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-leaf {
+  position: absolute;
+  opacity: 0.35;
+}
+.ambient-leaf path {
+  fill: var(--sage-soft);
+  stroke: var(--sage);
+  stroke-width: 1.4;
+}
+
+.ambient-star {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--yellow);
+  box-shadow: 0 0 8px 1px var(--yellow);
+}
+
+.ambient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.35;
+}
+.ambient-blob-a {
+  width: 44vmax; height: 44vmax;
+  left: -14vmax; top: -16vmax;
+  background: var(--sage-soft);
+}
+.ambient-blob-b {
+  width: 38vmax; height: 38vmax;
+  right: -12vmax; bottom: -14vmax;
+  background: var(--blue-soft);
+}
+
+/* ---------- time-of-day scenes ---------- */
+.ambient-dust {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--yellow);
+  opacity: 0.3;
+}
+
+.ambient-firefly {
+  position: absolute;
+  border-radius: 50%;
+  background: #e9d98a;
+  box-shadow: 0 0 10px 2px rgba(233, 217, 138, 0.8);
+}
+
+.ambient-sun {
+  position: absolute;
+  top: -8vmax;
+  right: 6vmax;
+  width: 26vmax;
+  height: 26vmax;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 185, 79, 0.4), transparent 70%);
+}
+
+.ambient-moon {
+  position: absolute;
+  top: 5vh;
+  right: 8vw;
+  width: 15vmax;
+  height: 15vmax;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(219, 228, 234, 0.28), transparent 70%);
+}
+
+/* period tints on the corner blobs */
+.ambient-morning .ambient-blob-a { background: var(--yellow-soft); }
+.ambient-evening .ambient-blob-a { background: var(--terracotta-soft); }
+.ambient-evening .ambient-blob-b { background: var(--yellow-soft); }
+.ambient-night .ambient-blob-a { background: var(--blue-soft); opacity: 0.25; }
+.ambient-night .ambient-blob-b { background: var(--sage-soft); opacity: 0.2; }

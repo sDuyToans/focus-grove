@@ -1,0 +1,127 @@
+/* AppShell — header, user menu, main layout */
+.shell {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  /* safe-area aware padding for iPad / notched phones */
+  padding: max(1rem, env(safe-area-inset-top)) max(clamp(1rem, 4vw, 2.5rem), env(safe-area-inset-right))
+    max(2.5rem, env(safe-area-inset-bottom)) max(clamp(1rem, 4vw, 2.5rem), env(safe-area-inset-left));
+}
+
+.shell-header {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.shell-brand { display: flex; align-items: center; gap: 0.55rem; }
+.shell-brand h1 { font-size: 2.2rem; }
+.shell-logo { font-size: 1.7rem; }
+
+.shell-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.shell-user { position: relative; }
+
+.shell-user-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.3rem 0.9rem 0.3rem 0.35rem;
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--card);
+  box-shadow: 0 3px 0 var(--ink);
+  font-weight: 700;
+  color: var(--ink);
+  min-height: 46px;
+  transition: transform 0.15s var(--ease-bounce), box-shadow 0.15s;
+}
+.shell-user-chip:hover { transform: translateY(-2px); box-shadow: 0 5px 0 var(--ink); }
+.shell-user-chip:active { transform: translateY(1px); box-shadow: 0 1px 0 var(--ink); }
+
+.shell-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: var(--paper-deep);
+}
+
+.shell-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  min-width: 230px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  z-index: 10;
+}
+.shell-menu-email {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  overflow-wrap: anywhere;
+}
+.shell-menu-logout { width: 100%; }
+
+.shell-main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+}
+.shell-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 540px) {
+  .shell-user-name { display: none; }
+  .shell-brand h1 { font-size: 1.8rem; }
+}
+
+/* ============================================================
+   Focus mode (set by ClockView via <html data-focus="on">):
+   the header and tabs melt away so only the clock remains.
+   Hovering or focusing them brings them softly back, so nothing
+   is ever unreachable.
+   ============================================================ */
+.shell-header,
+.tabs {
+  transition: opacity 0.9s ease, filter 0.9s ease;
+}
+
+[data-focus='on'] .shell-header,
+[data-focus='on'] .tabs {
+  opacity: 0.12;
+  filter: blur(1px) saturate(0.6);
+}
+
+[data-focus='on'] .shell-header:hover,
+[data-focus='on'] .shell-header:focus-within,
+[data-focus='on'] .tabs:hover,
+[data-focus='on'] .tabs:focus-within {
+  opacity: 1;
+  filter: none;
+  transition-duration: 0.25s;
+}
+
+/* the ambient scene also calms down while focused */
+[data-focus='on'] .ambient {
+  opacity: 0.4;
+  transition: opacity 1.2s ease;
+}

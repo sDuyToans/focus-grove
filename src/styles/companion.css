@@ -1,0 +1,100 @@
+/* ============================================================
+   AnimalCompanion — "Maple" the chibi cat.
+
+   The cat gets its OWN color tokens instead of the app's ink/paper
+   tokens. Why: the app tokens invert in dark mode (ink becomes cream),
+   which used to give the cat pale eyes and dark eye-shines — creepy.
+   Here the eyes stay dark, the shines stay white, and dark mode only
+   warms/deepens the fur so Maple looks cozy by lamplight.
+   ============================================================ */
+
+.companion {
+  display: inline-block;
+  filter: drop-shadow(0 4px 6px rgba(93, 74, 52, 0.14));
+
+  /* -------- light theme cat palette -------- */
+  --cat-outline: #6b4f38;   /* warm brown line work */
+  --cat-fur: #f3bd8b;       /* peachy orange fur */
+  --cat-belly: #fff4e3;     /* cream belly & muzzle */
+  --cat-ear-inner: #f6b8ad; /* soft pink */
+  --cat-blush: #f2a48f;
+  --cat-eye: #453527;       /* always dark, always friendly */
+  --cat-shine: #ffffff;     /* always white */
+  --cat-nose: #d98a70;
+  --cat-sparkle: #e8b94f;
+  --cat-heart: #e08e8e;
+  --cat-zzz: #7e97ad;
+}
+
+/* dark mode: deepen the fur a touch, soften the outline — but keep
+   dark eyes + white shines so the face never inverts */
+[data-theme='dark'] .companion {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
+  --cat-outline: #4a3626;
+  --cat-fur: #e0a877;
+  --cat-belly: #f6e9d2;
+  --cat-ear-inner: #d99287;
+  --cat-blush: #d98d78;
+  --cat-eye: #362a1e;
+  --cat-nose: #c07a5f;
+  --cat-sparkle: #e3bc63;
+  --cat-heart: #d98d8d;
+  --cat-zzz: #8fa7bc;
+}
+
+/* -------- fills & lines -------- */
+.cat-fur {
+  fill: var(--cat-fur);
+  stroke: var(--cat-outline);
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+.cat-fur-solid { fill: var(--cat-fur); stroke: var(--cat-outline); stroke-width: 3; }
+.cat-belly { fill: var(--cat-belly); }
+.cat-ear-inner { fill: var(--cat-ear-inner); }
+.cat-blush { fill: var(--cat-blush); opacity: 0.75; }
+.cat-eye { fill: var(--cat-eye); }
+.cat-shine { fill: var(--cat-shine); }
+.cat-shine-soft { opacity: 0.7; }
+.cat-nose { fill: var(--cat-nose); stroke: var(--cat-outline); stroke-width: 1.5; }
+.cat-shadow { fill: var(--cat-outline); opacity: 0.12; }
+.cat-sparkle { fill: var(--cat-sparkle); }
+.cat-heart { fill: var(--cat-heart); }
+
+.cat-tail {
+  fill: none;
+  stroke: var(--cat-fur);
+  stroke-width: 11;
+  stroke-linecap: round;
+}
+
+.cat-mouth,
+.cat-closed-eye path,
+.cat-detail,
+.cat-stripe {
+  fill: none;
+  stroke: var(--cat-outline);
+  stroke-linecap: round;
+}
+.cat-mouth { stroke-width: 2.4; }
+.cat-closed-eye path { stroke-width: 3.4; }
+.cat-detail { stroke-width: 2; opacity: 0.85; }
+.cat-stripe { stroke-width: 2.4; opacity: 0.55; }
+
+.cat-whisker path {
+  fill: none;
+  stroke: var(--cat-outline);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  opacity: 0.5;
+}
+
+.cat-zzz text {
+  fill: var(--cat-zzz);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+/* focus-session pencil */
+.cat-pencil { fill: #e8b94f; stroke: var(--cat-outline); stroke-width: 2; }
+.cat-pencil-tip { fill: var(--cat-belly); stroke: var(--cat-outline); stroke-width: 1.6; }
