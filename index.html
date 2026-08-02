@@ -9,7 +9,43 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="Focus Grove — a cozy, hand-drawn focus companion with a clock, pomodoro and timers." />
-    <title>Focus Grove</title>
+    <link rel="canonical" href="%VITE_SITE_URL%/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="%VITE_SITE_NAME%" />
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
+    <meta property="og:title" content="%VITE_SITE_NAME% — Cozy focus companion" />
+    <meta property="og:description" content="A cozy, hand-drawn focus companion with a clock, pomodoro, timers and Maple the cat." />
+    <meta property="og:image" content="%VITE_SITE_URL%%VITE_OG_IMAGE_URL%" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="%VITE_TWITTER_HANDLE%" />
+    <meta name="twitter:title" content="%VITE_SITE_NAME% — Cozy focus companion" />
+    <meta name="twitter:description" content="A cozy, hand-drawn focus companion with a clock, pomodoro, timers and Maple the cat." />
+    <meta name="twitter:image" content="%VITE_SITE_URL%%VITE_OG_IMAGE_URL%" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "%VITE_SITE_NAME%",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "Any",
+        "description": "A cozy, hand-drawn focus companion with a clock, pomodoro, timers and Maple the cat.",
+        "url": "%VITE_SITE_URL%/",
+        "image": "%VITE_SITE_URL%%VITE_OG_IMAGE_URL%",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+
+    <title>%VITE_SITE_NAME% — Cozy focus companion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

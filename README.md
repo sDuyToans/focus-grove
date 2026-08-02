@@ -94,6 +94,26 @@ totalMs}` to `localStorage` on start/pause/reset — a reload restores a
 running timer mid-flight, and one that expired while away fires its
 completion on the next mount. See `src/hooks/__tests__/`.
 
+### SEO / share metadata
+
+The built HTML includes canonical, Open Graph, Twitter Card, and
+SoftwareApplication JSON-LD tags. The values come from the committed
+`.env` file (safe defaults) and can be overridden in `.env.local`:
+
+```bash
+VITE_SITE_URL=https://yourdomain.com
+VITE_SITE_NAME=Focus Grove
+VITE_OG_IMAGE_URL=/og-image.png
+VITE_TWITTER_HANDLE=@yourhandle
+```
+
+Before deploying:
+
+1. Replace `https://focusgrove.app` in `public/robots.txt` and
+   `public/sitemap.xml` with your real domain.
+2. Add a 1200×630 share image at `public/og-image.png` (or point
+   `VITE_OG_IMAGE_URL` to an existing image).
+
 ### Connecting real Google sign-in (Supabase)
 
 The app auto-detects its mode: with no env vars it runs the **mock**
